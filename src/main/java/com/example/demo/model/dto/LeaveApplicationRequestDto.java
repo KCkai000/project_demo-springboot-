@@ -1,7 +1,8 @@
 package com.example.demo.model.dto;
 
-import org.hibernate.validator.constraints.Range;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank; //可以驗證字串非空白也只有空白
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -13,13 +14,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LeaveApplicationRequestDto {
 	
-	@NotNull(message = "標題不得空白")
-	@Size(min = 2, message ="標題不得低於2個字")
+	@NotBlank(message = "{LeaveApplicationRequestDto.title.notnull}")
+	@Size(min = 2, max = 100, message ="{LeaveApplicationRequestDto.title.size}")
 	private String title;
-	@NotNull(message = "內文不得空白")
-	@Size(min = 2, message ="內容不得低於2個字")
+	@NotBlank(message = "{LeaveApplicationRequestDto.content.notnull}")
+	@Size(min = 2, max = 500, message ="{LeaveApplicationRequestDto.content.size}")
 	private String content;
-	@NotNull(message = "員工不得為空白")
-	@Range(min = 1, message = "公司員工編號不得為0")
+	@NotNull(message = "{LeaveApplicationRequestDto.senderId.notnull}")
+	@Min(value = 1, message = "{LeaveApplicationRequestDto.senderId.min}")
 	private Integer senderId;
 }
