@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +10,16 @@ import com.example.demo.model.entity.User;
 import com.example.demo.repository.UserRepository;
 
 @SpringBootTest
-public class Test_User {
+public class Test_UserRead {
 	
 	@Autowired
 	private UserRepository userRepository;
 	
 	@Test
-	public void addUser() {
-		//尋找使用者
-		Optional<User> optUser = userRepository.findById(1);
-		if(optUser.isEmpty()) {
-			System.out.println("查無使用者");
-			return;
-		}
+	public void read() {
+		List<User> users = userRepository.findAll();
+		users.forEach(user ->{
+			System.out.printf("id:%d 使用者姓名:%s%n 使用者帳號:%s%n", user.getUserId(), user.getUsername(), user.getUserAccount());
+		});
 	}
 }

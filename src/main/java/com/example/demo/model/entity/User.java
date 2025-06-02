@@ -27,9 +27,9 @@ public class User {
 	@Column(name="user_id")
 	private Integer userId;  //使用者id
 	@Column(name="user_name", nullable = false, length =60)
-	private String username; //使用者
+	private String username; //使用者姓名
 	@Column(name = "user_account", unique = true, length = 30, nullable = false)
-	private String userAccount;
+	private String userAccount; // 使用者帳號
 	@Column(name= "password_hash", nullable = false)
 	private String passwordHash; //使用者密碼
 	@Column(name = "salt", nullable = false)
