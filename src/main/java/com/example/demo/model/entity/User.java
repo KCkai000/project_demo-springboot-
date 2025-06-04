@@ -38,4 +38,6 @@ public class User {
 	private Boolean active;   //是否啟用
 	@OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, fetch = FetchType.LAZY)  
 	private List<LeaveApplicationForm> leaveApplicationForms;  //laForm 表示請假單
+	@Column(name = "role_id")
+	private Integer userRole;
 }

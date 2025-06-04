@@ -8,4 +8,5 @@ public class UserDto {
 	private String username;
 	private String userAccount;
 	private Boolean active;
+	private Integer roleId;
 }

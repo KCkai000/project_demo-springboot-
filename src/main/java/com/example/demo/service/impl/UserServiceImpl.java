@@ -50,10 +50,10 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	@Transactional
-	public void addUser2(String username, String userAccount, String password, Boolean active) throws UserException {
+	public void addUser2(String username, String userAccount, String password, Boolean active, Integer roleId) throws UserException {
 		String salt = Hash.getSalt();
 		String passwordHash = Hash.getHash(password, salt);
-		User user = new User(null, username, userAccount, passwordHash, salt, active, null);
+		User user = new User(null, username, userAccount, passwordHash, salt, active,  null, roleId);
 		userRepository.save(user);
 	}
 	
